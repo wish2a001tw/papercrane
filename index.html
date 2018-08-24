@@ -6,14 +6,19 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="navigation.css">
    <link rel="stylesheet" href="navigation2.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="navigation.js"></script>
 </head>
 
 <body>
 <header class="header">
-	<a href="#" title="紙鶴" rel="home">
-		<h1 class="my_site_title_class">紙鶴</h1>
-		<h2 class="my_site_description_class">作者: Jackcal Hsu</h2>
-	</a>						
+	<div class="container">
+		<a href="#" title="紙鶴" rel="home">
+			<p class="site-logo">紙鶴</p>
+			<p class="site-description">作者: Jackcal Hsu</p>
+		</a>	
+		<button class="nav-toggle-button">≡</button>		
+	</div>
 </header>
 <nav class="navigation">
 <!-- 以下是nav -->
@@ -25,7 +30,7 @@
 		<a href="#" >關於作者</a>
 	</li>
 	<li class="deeper parent">
-		<a href="#" >關於紙鶴</a>
+		<a href="#" >角色</a>
 		<ul class="nav-child unstyled small">
 			<li>
 				<a href="#" >女主角</a>

@@ -1,237 +1,340 @@
-﻿/* 參考色碼表: https://www.toodoo.com/db/color.html */
-/*=======================================================*/
-/* 基本的HTML元素的設定，可以想成是調整預設值
-/*-------------------------------------------------------*/
-/* 當你設定一個元素樣式為「box-sizing: border-box;」，
-/* 這個元素的內距和邊框將不會增加元素本身的寬度。 */
-/* 這樣可以確保所有元素的寬度都可以用比較直觀的方式來定義 */
-/* 這裡把所有的元素都套用此設定，當作預設值*/
-/* -- */
-/* 心得:這裡一般來說不去調整。*/
-*,
-*:after,
-*:before 
+﻿/*-------------------------------------------------------*/
+/* 高解析度 */
+@media (min-width: 769px)
 {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+	/*-------------------------------------------------------*/
+	*,
+	*:after,
+	*:before 
+	{
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+	html 
+	{
+		font-size: 100%;/* 設定字體大小用百分比當作單位，則由預設值16px來計算，也就等於 16px*100% */
+		-webkit-font-smoothing: antialiased;/* 設定字體平滑 */
+	}
+	/* 抄自Bootstrap範例，再增加微軟正黑體及黑體。*/
+	body 
+	{	
+		margin: 0;
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","微軟正黑體","Microsoft JhengHei","sans-serif";
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+		text-align: left;
+	}
+	a 
+	{
+		text-decoration: none;
+		-webkit-transition: all 0.3s ease-out;/* webkit瀏覽器的轉場效果 */
+		-moz-transition: all 0.3s ease-out;/* moz瀏覽器的轉場效果 這裡的用法:所有屬性(all)只要發生改變，等待 0.3 秒(0.3s)，轉場到新的樣式;ease-out 的意思是開始快，然後慢慢減速*/
+		-ms-transition: all 0.3s ease-out;/* ms瀏覽器的轉場效果 */
+		-o-transition: all 0.3s ease-out;/* o瀏覽器的轉場效果 */
+		transition: all 0.3s ease-out;/* 一般瀏覽器的轉場效果 */
+	}
+	/*-------------------------------------------------------*/
+	/*-------------------------------------------------------*/
+	/* body中的header 主要有Logo與nav-toggle-button */
+	header.header 
+	{  
+		position: relative;
+		width: 100%;
+		padding: .5rem 1rem;	
+	}
+	header.header .container 
+	{
+		display:flex;
+		justify-content: center;	
+		align-items: center;
+		text-align: center;	
+	}
+	header.header a,  
+	header.header:visited
+	{
+		color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
+	}
+	header.header a:hover 
+	{
+		color: #fff;/* 導覽列字體hover */
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+	}
+	header.header .site-logo
+	{
+		margin: 0;
+		line-height:1;
+		font-size: 2rem;
+		font-weight: bolder;	
+		text-transform: uppercase;				
+	}
+	header.header .site-description 
+	{		
+		margin: 0;
+		line-height:1;
+		font-size: 1rem;
+		font-weight: 300;
+		text-transform: uppercase;		
+	}
+	header.header .nav-toggle-button 
+	{
+		display:none;	
+	}
+	/*-------------------------------------------------------*/
+	/*-------------------------------------------------------*/
+	/* body中的navigation */
+	nav.navigation
+	{	
+		position: relative;
+		width: 100%;	
+	}
+	nav.navigation .nav
+	{
+		display:flex;
+		justify-content: center;	
+		align-items: center;
+		text-align: center;	
+	}
+	nav.navigation ul
+	{
+		margin: 0;
+		padding: 0;	
+		list-style-type: none; 
+	}
+	/* 第一層導航選單 */
+	nav.navigation .nav > li > a 
+	{		
+		color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
+		display: block;
+		padding: .5rem 1rem;	
+		font-size: 1rem;
+		line-height: 1.5rem;
+		border-right: 1px solid rgba(255,255,255,.1); 
+		border-left: 1px solid rgba(255,255,255,.1); 
+	}
+	/* 導覽列hover 第一層導航選單hover */
+	nav.navigation .nav > li > a:hover,
+	nav.navigation .nav > li > a:focus 
+	{
+		color: #fff;/* 導覽列字體hover */
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+		text-decoration: none;	
+	}
+	nav.navigation .nav-pills > .active > a,
+	nav.navigation .nav-pills > .active > a:hover,
+	nav.navigation .nav-pills > .active > a:focus 
+	{	
+		color: #FFFFFF;/* 導覽列字體active 顏色*/
+	}
+	/* 其他層導航選單 延伸導覽列 */
+	nav.navigation .nav-child 
+	{	
+		background-color: #F0BBFF; /* 延伸導覽列 (色碼表=[1,20])*/
+		position: absolute;
+		line-height: 2rem;
+		display: none;	
+	}
+	nav.navigation .nav-child a 
+	{
+		display: block;
+		padding: .25rem 1rem;	
+		white-space: nowrap;
+	}
+	nav.navigation .nav li 
+	{
+		position: relative;
+	}
+	nav.navigation .nav > li:hover > .nav-child,
+	nav.navigation .nav > li > a:focus + .nav-child,
+	nav.navigation .nav li li:hover > .nav-child,
+	nav.navigation .nav li li > a:focus + .nav-child 
+	{
+		display: block;
+	}
+	/*第一層指引箭頭*/
+	nav.navigation .nav > li > .nav-child:after 
+	{
+		position: absolute;
+		top: -6px;
+		left: 20px;
+		display: inline-block;
+		border-right: 6px solid transparent;
+		border-bottom: 6px solid #ff00ff;
+		border-left: 6px solid transparent;
+		content: '';
+	}
+	nav.navigation .nav li li .nav-child 
+	{
+		top: -8px;
+		left: 100%;
+	}
+	/*第二層指引箭頭*/
+	nav.navigation .nav li li .nav-child:after 
+	{
+		position: absolute;
+		top: 18px;
+		left: -6px;
+		display: inline-block;
+		border-top: 6px solid transparent;
+		border-right: 6px solid #ff0000;
+		border-bottom: 6px solid transparent;
+		content: '';
+	}
+	/* 延伸導覽列hover */
+	nav.navigation .nav-child li > a:hover,
+	nav.navigation .nav-child li > a:focus
+	{
+		color: #fff;/* 延伸導覽列字體hover */
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+		text-decoration: none;
+	}
+	/*-------------------------------------------------------*/
+}	
 /*-------------------------------------------------------*/
 /*-------------------------------------------------------*/
-/* 把<html>內的東西都調整字體，及平滑化*/
-/* -- */
-/* 心得:這裡一般來說不去調整。頂多稍微調整字體大小*/
-html 
-{
-	font-size: 100%;/* 設定字體大小用百分比當作單位，則由預設值16px來計算，也就等於 16px*62.5% */
-	-webkit-font-smoothing: antialiased;/* 設定字體平滑 */
-}
-/*-------------------------------------------------------*/
-/*-------------------------------------------------------*/
-/* 把<body>內的東西都設定一下*/
-/* -- */
-/* 心得:這裡一般來說不去調整。字體大小跟HTML的字體大小有關要一起設定*/
-body 
+/* 手機與平板解析度 */
+@media (max-width: 768px)
 {	
-	background: #FFB7DD;/* BODY 淺粉紅(色碼表=[1,2])*/
-	margin: 0;
+	/*-------------------------------------------------------*/
+	*,
+	*:after,
+	*:before 
+	{
+	  -webkit-box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  box-sizing: border-box;
+	}
+	html 
+	{
+		font-size: 100%;/* 設定字體大小用百分比當作單位，則由預設值16px來計算，也就等於 16px*100% */
+		-webkit-font-smoothing: antialiased;/* 設定字體平滑 */
+	}
+	body 
+	{	
+		margin: 0;
+		font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","微軟正黑體","Microsoft JhengHei","sans-serif";
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+		text-align: left;
+	}
+	a 
+	{
+		text-decoration: none;/* 設定文字特效，none就是無特效(也是預設值) */
+		-webkit-transition: all 0.3s ease-out;/* webkit瀏覽器的轉場效果 */
+		-moz-transition: all 0.3s ease-out;/* moz瀏覽器的轉場效果 這裡的用法:所有屬性(all)只要發生改變，等待 0.3 秒(0.3s)，轉場到新的樣式;ease-out 的意思是開始快，然後慢慢減速*/
+		-ms-transition: all 0.3s ease-out;/* ms瀏覽器的轉場效果 */
+		-o-transition: all 0.3s ease-out;/* o瀏覽器的轉場效果 */
+		transition: all 0.3s ease-out;/* 一般瀏覽器的轉場效果 */
+	}
+	/*-------------------------------------------------------*/
+	/*-------------------------------------------------------*/
+	/* body中的header 主要有Logo與nav-toggle-button */
+	header.header 
+	{  
+		position: relative;
+		width: 100%;
+		padding: .5rem 1rem;	
+		border-bottom: 1px solid rgba(255,255,255,.1);
+	}
+	header.header .container 
+	{
+		display:flex;
+		justify-content: space-between;	
+		align-items: center;
+	}
+	header.header a,
+	header.header:visited  
+	{	
+		color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
+	}
+	header.header a:hover 
+	{
+		color: #F0F0F0;/* 標題字體hover 無背景連結字體灰白色*/
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+	}
+	header.header .site-logo 
+	{
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: bolder;/* 設定字體粗度 */	
+		text-transform: uppercase;		
+	}
+	header.header .site-description 
+	{	
+		display:none;
+	}
+	header.header .nav-toggle-button 
+	{
+		padding: .25rem .75rem;
+		font-size: 1.25rem;
+		line-height: 1;
+		border: 1px solid rgba(255,255,255,.1);
+		border-radius: .25rem;
+		cursor: pointer;	
+	}
+	/*-------------------------------------------------------*/
+	/*-------------------------------------------------------*/
+	/* body中的navigation */
+	nav.navigation
+	{	
+		position: relative;
+		width: 100%;
+		border-bottom: 1px solid rgba(255,255,255,.1);
+	}	
+	nav.navigation .nav 
+	{
+		width: 100%;
+		padding-right: 1rem;
+		padding-left: 1rem;
+		/* 調整預設顯示模式 */
+		display: none;/* none就是不顯示 */
+	}	
+	nav.navigation li,
+	nav.navigation ul
+	{	
+		margin: 0;/* 移除瀏覽器預設值 */
+		padding: 0;/* 移除瀏覽器預設值 */ 		
+		list-style-type: none; /* 移除段落命名 */
+	}
+	/* 第一層導航選單 */
+	nav.navigation .nav > li > a 
+	{
+		display: block;
+		padding: .5rem 0rem;
+		border-bottom: 1px solid rgba(255,255,255,.1);
+	}
+	/* 導覽列hover 第一層導航選單hover */
+	nav.navigation .nav > li > a:hover,
+	nav.navigation .nav > li > a:focus 
+	{
+		color: #fff;/* 導覽列字體hover */
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+		text-decoration: none;	
+	}
+	nav.navigation .nav-pills > .active > a,
+	nav.navigation .nav-pills > .active > a:hover,
+	nav.navigation .nav-pills > .active > a:focus 
+	{	
+		color: #fff;/* 導覽列字體active 顏色*/
+	}
+	/* 其他層導航選單 */
+	nav.navigation .nav-child a 
+	{
+		display: block;
+		padding: .5rem 0rem;
+		border-bottom: 1px solid rgba(255,255,255,.1);
+	}
+	/* 其他層導航選單hover */
+	nav.navigation .nav-child li > a:hover,
+	nav.navigation .nav-child li > a:focus
+	{
+		color: #fff;/* 延伸導覽列字體hover */
+		background-color: rgba(240,240,240,.2);/* 導覽列hover 背景*/
+		text-decoration: none;
+	}
+	/*-------------------------------------------------------*/
 }
 /*-------------------------------------------------------*/
 
-/*-------------------------------------------------------*/
-/* 把<a>(通常是超連結)內的東西都設定一下*/
-a 
-{
-	text-decoration: none;/* 設定文字特效，none就是無特效(也是預設值) */
-	-webkit-transition: all 0.3s ease-out;/* webkit瀏覽器的轉場效果 */
-	-moz-transition: all 0.3s ease-out;/* moz瀏覽器的轉場效果 這裡的用法:所有屬性(all)只要發生改變，等待 0.3 秒(0.3s)，轉場到新的樣式;ease-out 的意思是開始快，然後慢慢減速*/
-	-ms-transition: all 0.3s ease-out;/* ms瀏覽器的轉場效果 */
-	-o-transition: all 0.3s ease-out;/* o瀏覽器的轉場效果 */
-	transition: all 0.3s ease-out;/* 一般瀏覽器的轉場效果 */
-}
-/*-------------------------------------------------------*/
-
-body > header.header 
-{  
-	/*background: #FFC8B4;/* 導覽列 淺橘紅(色碼表=[1,4])，被蓋掉了所以註解*/
-	position: relative;
-	width: 100%;
-	display: inline-block;
-	text-align: center;	
-}
-body > header.header a  
-{
-	color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
-}
-body > header.header:visited
-{
-	color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
-}
-body > header.header a:hover 
-{
-	color: #F0F0F0;/* 標題字體hover 無背景連結字體灰白色*/
-}
-body > header.header .my_site_title_class 
-{
-	background: #FFEE99;/* 導覽列 鵝黃色(色碼表=[1,6])*/
-	margin: 0;
-	font-size: 2rem;
-	font-weight: 700;/* 設定字體粗度 */	
-	text-transform: uppercase;		
-	/*padding-top: 10px;*/
-}
-body > header.header .my_site_description_class 
-{	
-	background: #EEFFBB;/* 導覽列 (色碼表=[1,8])*/
-	margin: 0;
-	font-size: 1rem;
-	font-weight: 300;/* 設定字體粗度 */
-	/*margin: -23px 0 0 0;*/
-	text-transform: uppercase;	
-}
-/*-------------------------------------------------------*/
-body > nav.navigation
-{	
-	background: #99FF99;/* 導覽列 (色碼表=[1,10])*/
-	text-align: center;	
-	position: relative;
-	display: inline-block;
-	width: 100%;	
-}
-body > nav.navigation .nav
-{
-	/*background: #AAFFEE;/* 導覽列 淺青色(色碼表=[1,12])，被蓋掉了所以註解*/
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;	
-}
-body > nav.navigation ul
-{
-	/*background-color: #CCEEFF; /* 導覽列 淺青色(色碼表=[1,14])，被蓋掉了所以註解*/
-	margin: 0;/* 移除瀏覽器預設值 */
-	padding: 0;/* 移除瀏覽器預設值 */ 		
-	list-style-type: none; /* 移除段落命名 */
-	display: inline-block;
-}
-/* 第一層導航選單 */
-body > nav.navigation .nav > li > a 
-{		
-	background-color: #CCCCFF; /* 導覽列 淺青色(色碼表=[1,16])*/
-	/* ++++++++++++++++++++++++++++++++++ */			
-	/* 選單設定字體顏色*/
-	color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
-	/* ++++++++++++++++++++++++++++++++++ */
-	/* ++++++++++++++++++++++++++++++++++ */
-	/* 設定為inline-block展示，可以簡單調整尺寸*/
-	display: inline-block;
-	height: 40px;
-	width: auto;	
-	/* ++++++++++++++++++++++++++++++++++ */	
-	padding: 0px 20px;
-	/* ++++++++++++++++++++++++++++++++++ */	
-	/* 選單設定最小高度 */
-	line-height: 40px; /*這樣調整選單就比較垂直置中了 */
-	/* 選單加上分隔框 */
-	/*border-right: 3px solid rgba(255, 255, 255, 0.1); /*這樣調整選單就比較清楚了 */
-	border-right: 1px solid rgba(255, 255, 255, 0.1); /*這樣調整選單就比較清楚了 */
-	border-left: 1px solid rgba(255, 255, 255, 0.1); /*這樣調整選單就比較清楚了 */
-	/* ++++++++++++++++++++++++++++++++++ */	
-}
-/* 導覽列hover 第一層導航選單hover */
-body > nav.navigation .nav > li > a:hover,
-body > nav.navigation .nav > li > a:focus 
-{
-	color: #fff;/* 導覽列字體hover */
-	background-color: rgba(240, 240, 240, 0.2);/* 導覽列hover 背景*/
-	text-decoration: none;	
-}
-body > nav.navigation .nav-pills > li 
-{	
-	/*background-color: #D1BBFF; /* 導覽列 (色碼表=[1,18])，被蓋掉了所以註解*/
-	/*選單浮動方便排版*/
-	float: left;
-}
-body > nav.navigation .nav-pills > .active > a,
-body > nav.navigation .nav-pills > .active > a:hover,
-body > nav.navigation .nav-pills > .active > a:focus 
-{	
-	/*background-color: #294959;/*active背景，目前打算不要用到*/
-	/*background-color: rgba(00, 160, 240, 0.2);/*active透明背景，目前打算不要用到*/
-	color: #FFFFFF;/* 導覽列字體active 顏色*/
-}
-
-body > nav.navigation .nav-child 
-{	
-	background-color: #F0BBFF; /* 延伸導覽列 (色碼表=[1,20])*/
-	/*opacity: 0.8;/* 延伸導覽列 透明度*/
-	
-	position: absolute;
-	/* 選單設定最小高度 */
-	line-height: 40px; /*這樣調整選單就比較垂直置中了 */
-	display: none;	
-}
-
-body > nav.navigation .nav-child a 
-{
-	/* ++++++++++++++++++++++++++++++++++ */			
-	/* 選單設定字體顏色*/
-	color: #880000;/* 主題字體 暗紅色(色碼表=[7,3])*/
-	/* ++++++++++++++++++++++++++++++++++ */
-	display: block;
-	padding: 5px 20px;	
-	white-space: nowrap;
-}
-
-body > nav.navigation .nav li 
-{
-	position: relative;
-}
-
-body > nav.navigation .nav > li:hover > .nav-child,
-body > nav.navigation .nav > li > a:focus + .nav-child,
-body > nav.navigation .nav li li:hover > .nav-child,
-body > nav.navigation .nav li li > a:focus + .nav-child 
-{
-	display: block;
-}
-
-/*第一層指引箭頭*/
-body > nav.navigation .nav > li > .nav-child:after 
-{
-	position: absolute;
-	top: -6px;
-	left: 20px;
-	display: inline-block;
-	border-right: 6px solid transparent;
-	border-bottom: 6px solid #ff00ff;
-	border-left: 6px solid transparent;
-	content: '';
-}
-body > nav.navigation .nav li li .nav-child 
-{
-	top: -8px;
-	left: 100%;
-}
-/*第二層指引箭頭*/
-body > nav.navigation .nav li li .nav-child:after 
-{
-	position: absolute;
-	top: 18px;
-	left: -6px;
-	display: inline-block;
-	border-top: 6px solid transparent;
-	border-right: 6px solid #ff0000;
-	border-bottom: 6px solid transparent;
-	content: '';
-}
-/* 延伸導覽列hover */
-body > nav.navigation .nav-child li > a:hover,
-body > nav.navigation .nav-child li > a:focus
-{
-	color: #fff;/* 延伸導覽列字體hover */
-	/*background-color: #00A0F0;/**/
-	background-color: rgba(240, 240, 240, 0.2);
-	text-decoration: none;
-}
-/*
-*/

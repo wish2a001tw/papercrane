@@ -1,53 +1,78 @@
-﻿/*=======================================================*/
-/*自訂顏色*/
-/*==*/
-/*BODY背景*/
-body 
+﻿/*-------------------------------------------------------*/
+/* 高解析度 */
+@media screen and (min-width: 769px)
+{
+	/*=======================================================*/
+	/*自訂顏色*/
+	/*==*/
+	/*BODY背景*/
+	body 
+	{	
+		background: #FFFFFF;/*白色*/
+	}
+	/*==*/
+	/* 導覽列 背景*/
+	header.header,
+	header.header .nav-toggle-button,
+	nav.navigation,
+	nav.navigation .nav-child
+	{
+		background: #4267b2;/*FaceBook淺藍導覽列，background: #4267b2;color: #fff;color: rgba(255,255,255,.5);*/
+	}
+	/*==*/
+	/*主題字體 顏色*/
+	header.header a,
+	header.header:visited,
+	nav.navigation .nav > li > a,
+	nav.navigation .nav-child a
+	{
+		color: #fff;/*FaceBook淺藍導覽列，background: #4267b2;color: #fff;color: rgba(255,255,255,.5);*/
+	}
+	/*==*/
+	/*透明主題字體 顏色*/
+	header.header a .site-description
+	{
+		color: rgba(255,255,255,.5);/*FaceBook淺藍導覽列，background: #4267b2;color: #fff;color: rgba(255,255,255,.5);*/
+	}
+	/*=======================================================*/
+}
+/*-------------------------------------------------------*/
+/*-------------------------------------------------------*/
+/* 手機與平板解析度 */
+@media screen and (max-width: 768px)
 {	
-	background: #FFFFFF;/*白色*/
+	/*=======================================================*/
+	/*自訂顏色*/
+	/*==*/
+	/*BODY背景*/
+	body 
+	{	
+		background: #FFFFFF;/*白色*/
+	}
+	/*==*/
+	/* 導覽列 背景*/
+	header.header,
+	header.header .nav-toggle-button,
+	nav.navigation
+	{
+		background: #4267b2;/*FaceBook淺藍導覽列，background: #4267b2;color: #fff;color: rgba(255,255,255,.5);*/
+	}
+	/*==*/
+	/*主題字體 顏色*/
+	header.header a,
+	header.header:visited,
+	nav.navigation .nav > li > a,
+	nav.navigation .nav-child a,
+	header.header .nav-toggle-button
+	{
+		color: #fff;/*FaceBook淺藍導覽列，background: #4267b2;color: #fff;color: rgba(255,255,255,.5);*/
+	}
+	/*==*/
+	/*主題外框 顏色*/
+	header.header .nav-toggle-button
+	{
+		border: 1px solid rgba(255,255,255,.2);/*透明主題外框*/
+	}
+	/*=======================================================*/
 }
-/*==*/
-/* 導覽列 背景*/
-body > header.header .my_site_title_class,
-body > header.header .my_site_description_class,
-body > nav.navigation,
-body > nav.navigation .nav > li > a
-{
-	background: #333333;/*灰黑色*/
-}
-/*==*/
-/* 導覽列hover 背景*/
-/*==*/
-/* 導覽列字體hover 背景*/
-/*==*/
-/* 導覽列字體active 顏色*/
-/*==*/
-/* 延伸導覽列 背景*/
-body > nav.navigation .nav-child 
-{
-	background: #333333;/*灰黑色*/
-}
-/*==*/
-/* 延伸導覽列 透明度*/
-body > nav.navigation .nav-child 
-{	
-	opacity: 1;/*延伸導覽列透明度*/
-}
-/*==*/
-/* 延伸導覽列hover 背景*/
-/*==*/
-/* 延伸導覽列字體hover */
-/*==*/
-/*主題字體 顏色*/
-body > header.header a,
-body > header.header:visited,
-body > nav.navigation .nav > li > a,
-body > nav.navigation .nav-child a 
-{
-	color: #00A0F0;/*主題色*/
-}
-/*==*/
-/*標題字體hover 顏色*/
-
-/*=======================================================*/
-
+/*-------------------------------------------------------*/
